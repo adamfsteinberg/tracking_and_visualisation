@@ -1,0 +1,60 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="48" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="JupyterKernelInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E222" />
+          <option value="E221" />
+          <option value="E203" />
+          <option value="E202" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="pyZgoubi_interface.FFAG" />
+          <option value="pyZgoubi_interface.TOSCA2" />
+          <option value="pyZgoubi_interface.CHANGREF" />
+          <option value="pyZgoubi_interface.*" />
+          <option value="accel_cycle.REBELOTE" />
+          <option value="zgoubi.elements.FFAG" />
+          <option value="zgoubi.elements.CAVITE" />
+          <option value="zgoubi.elements.TOSCA" />
+          <option value="zgoubi.elements.POLARMES" />
+          <option value="zgoubi.elements.PARTICUL" />
+          <option value="viz_tools" />
+          <option value="arrays" />
+          <option value="optimisation" />
+          <option value="util" />
+          <option value="wedges" />
+          <option value="testing_from_orbits.pamela_style.testing_frequency_map_analysis.REBELOTE" />
+          <option value="testing_from_orbits.pamela_style.testing_frequency_map_analysis.DRIFT" />
+          <option value="testing_from_orbits.pamela_style.testing_frequency_map_analysis.FAISCNL" />
+          <option value="testing_from_orbits.pamela_style.testing_frequency_map_analysis.END" />
+          <option value="dynamicsFromOrbits.core.ElementDict.extra_plot_hints" />
+          <option value="tuple.y" />
+          <option value="tuple.t" />
+          <option value="lattice_design.dispersion_suppression_attempt_1.numerical_integration.ElementBaseClass.rot_ang" />
+          <option value="tuple.sol" />
+          <option value="tuple.x" />
+          <option value="lattice_design.dispersion_suppression_attempt_1.numerical_integration.ElementBaseClass.theta_entrance_intrinsic" />
+          <option value="lattice_design.dispersion_suppression_attempt_1.numerical_integration.ElementBaseClass.theta_exit_intrinsic" />
+          <option value="lattice_design.dispersion_suppression_attempt_1.numerical_integration.ElementBaseClass.Bfields" />
+          <option value="symengine.functions.cos" />
+          <option value="symengine.functions.sin" />
+          <option value="symengine.functions.cosh" />
+          <option value="symengine.functions.sinh" />
+          <option value="symengine.functions.acos" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
