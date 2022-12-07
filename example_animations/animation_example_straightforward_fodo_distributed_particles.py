@@ -35,10 +35,13 @@ if __name__ == '__main__':
     epsilon_max_x = 2.5E-6*0.0625
     epsilon_max_y = 3.5E-6*0.0625
 
-    count_turns = 20
-    count_frames_per_turn = 100
+    count_turns = 100
+    count_frames_per_turn = 1
     num_particles = 1000
-    filename = 'results/phase_space_tracking/matched_20_turn.mp4'
+    show_fodo_structure = False
+    show_reference_particle_especially = True
+    display_turn_number = True
+    filename = 'results/phase_space_tracking/show_phase_advance_as_rotation.mp4'
 
 
     s0 = 0.0
@@ -108,6 +111,9 @@ if __name__ == '__main__':
 
     total_frame_number = count_frames_per_turn * count_turns
 
+    # Choose a nice reference to display
+    ind_max = np.argwhere((x[0, 0]>0.5) & (y[0, 0]>0.5) & (px[0, 0]>0.5) & (py[0, 0]< -0.3))[0][0]
+
     def update_first_section(frame_number):
         print(f'{frame_number+1}/{count_frames_per_turn*count_turns}')
         reset_figax(fig, ax_up, tight_layout=False, xlabel="", ylabel="Angle ($x$) [mrad]", xlim=(-2.0, 2.0), ylim=(-4.0, 4.0))
@@ -126,6 +132,15 @@ if __name__ == '__main__':
         ax_up.scatter(xvals, pxvals, c=colors, cmap='hsv')
         ax_mi.scatter(xvals, yvals, c=colors, cmap='hsv')
         ax_ri.scatter(pyvals, yvals, c=colors, cmap='hsv')
+        if show_reference_particle_especially:
+            ax_up.scatter(xvals[ind_max], pxvals[ind_max], c='red', edgecolor='firebrick', linewidth=3.5, s=250)
+            ax_mi.scatter(xvals[ind_max], yvals[ind_max], c='red', edgecolor='firebrick', linewidth=3.5, s=250)
+            ax_ri.scatter(pyvals[ind_max], yvals[ind_max], c='red', edgecolor='firebrick', linewidth=3.5, s=250)
+        if display_turn_number:
+            for txt in fig.texts:
+                txt.set_visible(False)
+            ax_mi.text(0.1, 0.85, f'{turn_num+1}', fontdict=dict(size=40), transform=ax_mi.transAxes)
+
         if 0 <= sval and sval < l_mag:
             c1 = 'royalblue'
             c2 = 'firebrick'
@@ -135,7 +150,7 @@ if __name__ == '__main__':
         else:
             c1 = 'white'
             c2 = 'white'
-        if count_frames_per_turn > 25:
+        if show_fodo_structure:
             ax_mi.fill_between(x_vals_for_magnet, y_vals_for_magnet, inf_like, lw=2, zorder=-10, color=c1, alpha=0.5)
             ax_mi.fill_between(-x_vals_for_magnet, -y_vals_for_magnet, -inf_like, lw=2, zorder=-10, color=c1, alpha=0.5)
             ax_mi.fill_between(x_vals_for_magnet, -y_vals_for_magnet, -inf_like, lw=2, zorder=-10, color=c2, alpha=0.5)
@@ -143,5 +158,5 @@ if __name__ == '__main__':
 
 
     ani = animation.FuncAnimation(fig, update_first_section, interval=10, repeat=True, save_count=int(1E7))
-    writer_video = animation.FFMpegWriter(fps=30)
+    writer_video = animation.FFMpegWriter(fps=2)
     ani.save(filename, writer=writer_video)
